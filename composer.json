@@ -1,0 +1,34 @@
+{
+    "name":         "aplyca/content-scrubbing-bundle",
+    "description":  "Content Scrubbing for eZ Publish 5",
+    "keywords":     ["Content", "eZ", "Scrubbing"],
+    "homepage":     "http://www.aplyca.com",
+    "type":         "library",
+    "license":      "GPLv3",
+    "authors":      [
+        {
+            "name":      "Mauricio Sánchez",
+            "email":     "msanchez@aplyca.com",
+            "homepage":  "http://www.aplyca.com"
+        }
+    ],
+    "require": {
+        "php":          ">=5.3.3"
+    },
+    "require-dev": {
+        "phpspec/phpspec": "~2"
+    },
+    "autoload": {
+        "psr-0": {
+            "Aplyca\\ContentScrubbingBundle": "src/"
+        }
+    },
+    "config": {
+        "bin-dir": "bin/"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0.x-dev"
+        }
+    }
+}
