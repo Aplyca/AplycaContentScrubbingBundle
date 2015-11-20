@@ -17,18 +17,13 @@ use eZ\Publish\Core\MVC\Legacy\Kernel;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface as Container;
 
-class SyncImisUserCommand extends \Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand
+class ContentScrubbingCommand extends \Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand
 {
     protected function configure()
     {
         $this
-            ->setName('hrs:syncimisuser')
-            ->setDescription('Sync IMIS user by IMIS Ids separated by comma')
-            ->addArgument(
-                'imisid',
-                InputArgument::REQUIRED,
-                'Imis Id of the user'
-            )
+            ->setName('aplyca:scrub')
+            ->setDescription('Scrub content')
             ->addOption(
                 'dry-run',
                 null,
@@ -38,28 +33,8 @@ class SyncImisUserCommand extends \Symfony\Bundle\FrameworkBundle\Command\Contai
         ;
     }
 
-    /**
-     * @return \eZ\Publish\Core\MVC\Legacy\Kernel
-     */
-    protected function getLegacyKernel()
-    {
-        $legacyKernelClosure = $this->getContainer()->get('ezpublish_legacy.kernel');
-
-        return $legacyKernelClosure();
-    }
-
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $imisID = $input->getArgument('imisid');
-        $imisIDs = explode(",", $imisID);
-
-        return $this->getLegacyKernel()->runCallback(
-            function () use ($imisIDs)
-            {
-                $syncManager = new \IMISSyncManager();
-                $syncManager->setOutputHandler(\eZCLI::instance());
-                $syncManager->processBlock($imisIDs);
-            }
-        );
+        echo "Something should happen";
     }
 }
